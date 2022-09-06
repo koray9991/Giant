@@ -5,19 +5,53 @@ using UnityEngine;
 public class Giant : MonoBehaviour
 {
     public Rigidbody rb;
-    public float z;
+    public float startSpeed;
     float velocity;
-    
+    public static Giant instance;
+    public GameObject mesh;
+    public Material[] mat;
+    bool laserEffect;
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+    }
+
+
     private void FixedUpdate()
     {
         float ropeCount = GameObject.FindGameObjectsWithTag("RopeToGiant").Length;
-        velocity = z - ropeCount / 2;
+        velocity = startSpeed - ropeCount / 2;
         if (velocity <= 0)
         {
             velocity = 0;
-            Debug.Log("Win");
+           
         }
-        rb.velocity = new Vector3(rb.velocity.x,rb.velocity.y, velocity);
+        if (laserEffect)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, velocity/4);
+        }
+        else
+        {
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, velocity);
+        }
+       
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Laser")
+        {
+            mesh.GetComponent<SkinnedMeshRenderer>().material = mat[1];
+            laserEffect = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Laser")
+        {
+            mesh.GetComponent<SkinnedMeshRenderer>().material = mat[0];
+            laserEffect = false;
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -28,7 +62,7 @@ public class Giant : MonoBehaviour
             other.GetComponent<BoxCollider>().isTrigger = false;
             other.transform.gameObject.layer = 9;
         }
-
         
+
     }
 }

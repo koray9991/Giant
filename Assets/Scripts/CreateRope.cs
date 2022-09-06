@@ -40,11 +40,11 @@ public class CreateRope : MonoBehaviour
         currentRope.transform.GetChild(1).transform.position =GetComponent<Line>().startPos.position;
         currentRope.transform.GetChild(2).transform.position = GetComponent<Line>().endPos.position;
         
-            if (Vector3.Distance(GetComponent<Line>().startPos.position, GetComponent<Line>().endPos.position) < 1)
-            {
+        if (Vector3.Distance(GetComponent<Line>().startPos.position, GetComponent<Line>().endPos.position) < 1)
+        {
                 Destroy(gameObject);
                 Destroy(currentRope);
-            }
+        }
         if (Vector3.Distance(GetComponent<Line>().startPos.position, GetComponent<Line>().endPos.position) > 10 && GetComponent<Line>().endPos.position.z> GetComponent<Line>().startPos.position.z)
         {
             if (GetComponent<LineFollow>().enabled && !destroyBool)

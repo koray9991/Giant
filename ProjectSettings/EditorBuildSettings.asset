@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/0.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: Assets/Scenes/Laser.unity
+    guid: c6b5ef30e2039c644b783496c47a85e1
+  - enabled: 1
+    path: Assets/Scenes/Gun.unity
+    guid: f6096f6e5878b2f4a8014a3f93ac073d
   m_configObjects: {}

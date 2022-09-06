@@ -37,7 +37,7 @@ public class CutRope : MonoBehaviour
     }
     IEnumerator DestroyRope()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(10f);
         Destroy(transform.parent.root.gameObject);
     }
     
