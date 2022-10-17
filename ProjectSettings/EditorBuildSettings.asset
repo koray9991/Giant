@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Laser.unity
-    guid: c6b5ef30e2039c644b783496c47a85e1
+    path: Assets/Scenes/Levels/Level1.unity
+    guid: 3a92b53456ef7014e818ba600aa14f71
   - enabled: 1
-    path: Assets/Scenes/Gun.unity
-    guid: f6096f6e5878b2f4a8014a3f93ac073d
+    path: Assets/Scenes/Levels/Level2.unity
+    guid: b3eaada702e6fdc42a2a6b85712b864f
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level5.unity
+    guid: ae646d5c027a14440ab881a58aa620a4
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level4.unity
+    guid: 2a07c70354d37aa4fb26afe2632de4ff
   m_configObjects: {}

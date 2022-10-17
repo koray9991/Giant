@@ -15,23 +15,27 @@ public class CreateRope : MonoBehaviour
 
     private void Start()
     {
-        giant = GameObject.Find("GiantParent");
+        giant = GameObject.FindGameObjectWithTag("GiantParent");
     }
     private void Update()
     { 
-        if (!Created)
+        if (!Created && GameControl.instance.totalRopeCount<5)
         {
             if (GetComponent<Line>().endPos.tag == "Giant")
             {
                 var newLine = Instantiate(ropePrefabConnectedPlayer, transform.position, Quaternion.identity);
                 currentRope = newLine;
                 newLine.transform.parent = gameObject.transform;
+                GameControl.instance.totalRopeCount++;
+                Debug.Log(GameControl.instance.totalRopeCount);
             }
             else
             {
                 var newLine = Instantiate(ropePrefab, transform.position, Quaternion.identity);
                 currentRope = newLine;
                 newLine.transform.parent = gameObject.transform;
+                GameControl.instance.totalRopeCount++;
+                Debug.Log(GameControl.instance.totalRopeCount);
             }
             
             Created = true;
@@ -45,12 +49,13 @@ public class CreateRope : MonoBehaviour
                 Destroy(gameObject);
                 Destroy(currentRope);
         }
-        if (Vector3.Distance(GetComponent<Line>().startPos.position, GetComponent<Line>().endPos.position) > 10 && GetComponent<Line>().endPos.position.z> GetComponent<Line>().startPos.position.z)
+        if (Vector3.Distance(GetComponent<Line>().startPos.position, GetComponent<Line>().endPos.position) > 20 && GetComponent<Line>().endPos.position.z> GetComponent<Line>().startPos.position.z)
         {
             if (GetComponent<LineFollow>().enabled && !destroyBool)
             {
                 StartCoroutine(DestroyRope());
                 destroyBool = true;
+                
             }
           
         }
@@ -62,6 +67,8 @@ public class CreateRope : MonoBehaviour
     IEnumerator DestroyRope()
     {
         yield return new WaitForSeconds(2f);
+        GameControl.instance.totalRopeCount--;
+        Debug.Log(GameControl.instance.totalRopeCount);
         Destroy(gameObject);
         Destroy(currentRope);
     }

@@ -17,14 +17,17 @@ public class Building : MonoBehaviour
     
     void FixedUpdate()
     {
-       // Debug.Log(cam.transform.position.z);
-        if (cam.transform.position.z > transform.position.z && cam.transform.position.z < transform.position.z + 60 )
+       
+        if (cam.transform.position.z > transform.position.z && cam.transform.position.z < transform.position.z + 70 )
         {
             
-            for (int i = 0; i < transform.GetChild(0).childCount; i++)
+            for (int i = 0; i < transform.childCount; i++)
             {
-
-                transform.GetChild(0).GetChild(i).gameObject.SetActive(true);
+                if (!transform.GetChild(i).gameObject.activeSelf)
+                {
+                    transform.GetChild(i).gameObject.SetActive(true);
+                }
+                
                    
                 
                
@@ -32,14 +35,18 @@ public class Building : MonoBehaviour
             
         }
         
-        if(cam.transform.position.z > transform.position.z + 60)
+        if(cam.transform.position.z > transform.position.z + 70)
         {
            
-            for (int j = 0; j < transform.GetChild(0).childCount; j++)
+            for (int j = 0; j < transform.childCount; j++)
             {
-                transform.GetChild(0).GetChild(j).gameObject.SetActive(false);
+                if (transform.GetChild(j).gameObject.activeSelf)
+                {
+                    transform.GetChild(j).gameObject.SetActive(false);
+                }
+                    
             }
-          //  GetComponent<Building>().enabled = false;
+        
         }
     }
 }

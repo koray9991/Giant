@@ -12,6 +12,17 @@ TagManager:
   - LaserBase
   - GiantParent
   - Laser
+  - GasStation
+  - Tanker
+  - TankerExplosion
+  - Car
+  - Human
+  - up
+  - down
+  - Tower
+  - WhiteHouse
+  - TowerPiece
+  - ArrowTower
   layers:
   - Default
   - TransparentFX
@@ -23,10 +34,10 @@ TagManager:
   - GiantParent
   - GiantChild
   - Destroyed
-  - 
-  - 
-  - 
-  - 
+  - Tanker
+  - Ground
+  - TowerPieces
+  - SnakeHead
   - 
   - 
   - 

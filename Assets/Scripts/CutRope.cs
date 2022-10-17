@@ -15,7 +15,7 @@ public class CutRope : MonoBehaviour
     private void Start()
     {
         rope = GetComponent<ObiRope>();
-        giant = GameObject.Find("GiantParent");
+        giant = GameObject.FindGameObjectWithTag("GiantParent");
 
     }
     private void Update()
@@ -31,6 +31,8 @@ public class CutRope : MonoBehaviour
             rope.Tear(rope.elements[rope.elements.Capacity / 2]);
             rope.RebuildConstraintsFromElements();
             destroyed = true;
+            GameControl.instance.totalRopeCount--;
+            Debug.Log(GameControl.instance.totalRopeCount);
             StartCoroutine(DestroyRope());
         }
         
